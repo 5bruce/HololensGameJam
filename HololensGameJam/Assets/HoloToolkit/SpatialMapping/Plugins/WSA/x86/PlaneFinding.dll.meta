@@ -46,8 +46,7 @@ PluginImporter:
         CPU: X86
         DontProcess: False
         PlaceholderPath: 
-        SDK: UWP
-        ScriptingBackend: AnyScriptingBackend
+        SDK: AnySDK
   userData: 
   assetBundleName: 
   assetBundleVariant: 
