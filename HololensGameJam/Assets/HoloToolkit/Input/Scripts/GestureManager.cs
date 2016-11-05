@@ -136,6 +136,10 @@ namespace HoloToolkit.Unity
         public MouseButton MouseSelectButton = MouseButton.Right;
 #endif
 
+
+        [Header("Spawn Objects")]
+        public GameObject toSpawn;
+
         private GestureRecognizer gestureRecognizer;
 
         /// <summary> We use a separate manipulation recognizer here because the tap gesture recognizer cancels
@@ -452,6 +456,12 @@ namespace HoloToolkit.Unity
             if (FocusedObject != null)
             {
                 FocusedObject.SendMessage("OnSelect", SendMessageOptions.DontRequireReceiver);
+            }
+            else if(GazeManager.Instance.Hit)
+            {
+                Transform transform = GazeManager.Instance.HitInfo.transform;
+                GameObject go = Instantiate<GameObject>(toSpawn, transform.position + GazeManager.Instance.Normal * 0.01f, transform.rotation);
+                go.transform.up = GazeManager.Instance.Normal;              
             }
         }
 
