@@ -560,7 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardSelectKey: 32
   MouseSelectButton: 1
-  toSpawn: {fileID: 1000891038498582, guid: b5c80b85aecc8cf44bc6e50fa52bf612, type: 2}
+  toSpawn: {fileID: 100010, guid: d3726c688e1d96b4c9caeb71c3b2e851, type: 2}
   toSpawnLayout:
     serializedVersion: 2
     m_Bits: 4294967243

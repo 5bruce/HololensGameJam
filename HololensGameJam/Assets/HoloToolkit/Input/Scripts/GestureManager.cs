@@ -458,14 +458,11 @@ namespace HoloToolkit.Unity
             {
                 FocusedObject.SendMessage("OnSelect", SendMessageOptions.DontRequireReceiver);
             }
-            //else if (GazeManager.Instance.Hit)
-            //{
-            //    //Transform transform = GazeManager.Instance.HitInfo.transform;
-            //    //GameObject go = Instantiate<GameObject>(toSpawn, transform.position + GazeManager.Instance.Normal * 0.01f, transform.rotation);
-            //    //go.transform.up = GazeManager.Instance.Normal;
-            //    GameObject go = Instantiate<GameObject>(toSpawn, Camera.main.transform.position + Camera.main.transform.forward * 1.0f, Quaternion.identity);
-            //}
 
+            if(FocusedObject.tag == "Chest")
+            {
+                return;
+            }
             RaycastHit hitInfo;
             bool onHit = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 5.0f, toSpawnLayout);
             if(onHit)
@@ -473,7 +470,6 @@ namespace HoloToolkit.Unity
                 GameObject go = Instantiate<GameObject>(toSpawn, hitInfo.point + hitInfo.normal * 0.05f, Quaternion.identity);
                 go.transform.up = hitInfo.normal;
             }
-
         }
 
         /// <summary>
