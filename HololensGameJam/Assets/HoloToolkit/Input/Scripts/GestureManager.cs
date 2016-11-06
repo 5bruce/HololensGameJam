@@ -468,6 +468,10 @@ namespace HoloToolkit.Unity
             if(onHit)
             {
                 GameObject go = Instantiate<GameObject>(toSpawn, hitInfo.point + hitInfo.normal * 0.05f, Quaternion.identity);
+                go.transform.localScale = Vector3.one * 0.1f;
+                go.GetComponent<ChestController>().rotate = false;
+                go.GetComponent<OnSelectEvent>().enabled = true;
+                go.GetComponent<SimpleTagalong>().enabled = false;
                 go.transform.up = hitInfo.normal;
             }
         }

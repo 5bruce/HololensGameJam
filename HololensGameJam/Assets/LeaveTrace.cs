@@ -5,6 +5,7 @@ using UnityEngine;
 public class LeaveTrace : MonoBehaviour {
     public GameObject TracePrefab;
     public float interval = 3f;
+    public float Offset = 1.7f;
 
     List<GameObject> Traces;
 
@@ -19,17 +20,25 @@ public class LeaveTrace : MonoBehaviour {
     {
         if(Traces.Count > 0)
         {
-            if (Vector3.Distance(Camera.main.transform.position, Traces[Traces.Count - 1].transform.position) > interval)
+            if (Vector3.Distance(Camera.main.transform.position - Vector3.up * Offset, Traces[Traces.Count - 1].transform.position) > interval)
             {
-                GameObject trace = Instantiate(TracePrefab, Camera.main.transform.position - Vector3.up * 1.7f, Quaternion.identity) as GameObject;
-                Traces.Add(trace);
+                SpawnTrace();
             }
         }
         else
         {
-            GameObject trace = Instantiate(TracePrefab, Camera.main.transform.position - Vector3.up * 1.7f, Quaternion.identity) as GameObject;
-            Traces.Add(trace);
+            SpawnTrace();
         }
         
+    }
+
+    void SpawnTrace()
+    {
+        GameObject trace = Instantiate(TracePrefab, Camera.main.transform.position - Vector3.up * Offset, Quaternion.identity) as GameObject;
+        Vector3 rot = -Camera.main.transform.forward;
+        rot.y = 0.0f;
+        trace.transform.forward = rot;
+        Traces.Add(trace);
+
     }
 }

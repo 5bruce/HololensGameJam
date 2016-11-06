@@ -97,7 +97,7 @@ namespace HoloToolkit.Unity
         protected override bool CalculateTagalongTargetPosition(Vector3 fromPosition, out Vector3 toPosition)
         {
             bool needsToMoveX = false;
-            bool needsToMoveY = false;
+            bool needsToMoveY = false;  
             toPosition = fromPosition;
 
             // Cache some things that we will need later.

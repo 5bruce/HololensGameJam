@@ -43,8 +43,63 @@ namespace HoloToolkit.Unity
         [Tooltip("An array of string keywords and UnityEvents, to be set in the Inspector.")]
         public KeywordAndResponse[] KeywordsAndResponses;
 
+        [Header("All Chests")]
+        public GameObject CursedChest;
+        public GameObject GrandChest;
+        public GameObject MuskChest;
+        public GameObject RustyChest;
+        public GameObject NormalChest;
+
         private KeywordRecognizer keywordRecognizer;
         private Dictionary<string, UnityEvent> responses;
+
+        // Switch between different chests
+        public void SwitchChest(string chestName)
+        {
+            switch (chestName) {
+                case "CursedChest":
+                    CursedChest.SetActive(true);
+                    GrandChest.SetActive(false);
+                    MuskChest.SetActive(false);
+                    RustyChest.SetActive(false);
+                    NormalChest.SetActive(false);
+                    GetComponent<GestureManager>().toSpawn = CursedChest;
+                    break;
+                case "GrandChest":
+                    CursedChest.SetActive(false);
+                    GrandChest.SetActive(true);
+                    MuskChest.SetActive(false);
+                    RustyChest.SetActive(false);
+                    NormalChest.SetActive(false);
+                    GetComponent<GestureManager>().toSpawn = GrandChest;
+                    break;
+                case "MuskChest":
+                    CursedChest.SetActive(false);
+                    GrandChest.SetActive(false);
+                    MuskChest.SetActive(true);
+                    RustyChest.SetActive(false);
+                    NormalChest.SetActive(false);
+                    GetComponent<GestureManager>().toSpawn = MuskChest;
+                    break;
+                case "RustyChest":
+                    CursedChest.SetActive(false);
+                    GrandChest.SetActive(false);
+                    MuskChest.SetActive(false);
+                    RustyChest.SetActive(true);
+                    NormalChest.SetActive(false);
+                    GetComponent<GestureManager>().toSpawn = RustyChest;
+                    break;
+                case "NormalChest":
+                    CursedChest.SetActive(false);
+                    GrandChest.SetActive(false);
+                    MuskChest.SetActive(false);
+                    RustyChest.SetActive(false);
+                    NormalChest.SetActive(true);
+                    GetComponent<GestureManager>().toSpawn = NormalChest;
+                    break;
+            };
+                    
+        }
 
         void Start()
         {
